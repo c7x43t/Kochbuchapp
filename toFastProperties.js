@@ -1,3 +1,4 @@
+// https://github.com/sindresorhus/to-fast-properties/blob/master/index.js
 (function(d) {
     function b(a) {
         if (null !== c && typeof c.property) return a = c, c = b.prototype = null, a;
