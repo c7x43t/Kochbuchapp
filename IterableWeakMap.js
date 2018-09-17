@@ -8,7 +8,7 @@ function IterableWeakMap(array){
 		if(array instanceof Array){
 			initIterableWeakMap=true;
 		}else{
-			throw new Error(this.constructor.name+" Intialization failed: Optional argument must be an Array.");
+			throw new Error("Intialization failed: Optional argument must be an Array.");
 		}
 	}
 	// the values array is iterable by this Iterator trough a for of loop
@@ -135,10 +135,10 @@ function IterableWeakMap(array){
 					this.length++;
 					_WeakMap_.set(array[i][0],index);
 				}else{
-					throw new Error(this.constructor.name+" Intialization failed: Numbers and Strings cannot be weakly referenced.");
+					throw new Error("Intialization failed: Numbers and Strings cannot be weakly referenced.");
 				}
 			}else{
-				throw new Error(this.constructor.name+" Intialization failed: Array must consist of [key,value] pairs. Arrays of length 2.");
+				throw new Error("Intialization failed: Array must consist of [key,value] pairs. Arrays of length 2.");
 			}
 		}
 	}
