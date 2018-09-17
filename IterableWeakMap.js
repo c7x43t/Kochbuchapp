@@ -13,7 +13,7 @@ function IterableWeakMap(){
 	function* objectIterator(){
 		const keys=Object.keys(this);
 		for(let i=0;i<keys.length;i++){
-			yield this.values[keys[i]];
+			yield this[keys[i]];
 		}
 	}
 	// the IterableWeakMap comes with additional properties:
