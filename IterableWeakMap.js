@@ -20,7 +20,8 @@ function IterableWeakMap(){
 	// length
 	// keys and values: sparse arrays holding the keys and values
 	// with corresponding keys, values beeing at the same index
-	// for set,get delete read the WeakMap reference as they should behave identical
+	// for set, get and delete read the WeakMap reference as they should behave identical:
+	// https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 	Object.defineProperties(this, {
 		length: {
 			value: 0,
@@ -68,10 +69,12 @@ function IterableWeakMap(){
 			}
 		},
 		// map, forEach, filter, reduce work exactly as expected from the Array methods
-		// the return a new IterableWeakMap in the case of map and filter
-		// arguments of the passed in functions should be (value,key,this) 
+		// they return a new IterableWeakMap in the case of map and filter
+		// arguments of the passed in functions should be (value,key,this)
+		// or (acc,value,key,this) in the case of reduce
 		// this beeing the IterableWeakMap itself
-		// if no acc=initialValue is passed to reduce the first element becomes
+		// if no acc=initialValue is passed to reduce the first element becomes he initialValue
+		// and iteration begins at the second element (same as in Array.reduce)
 		map:{
 			value: function(f){
 				var indices=Object.keys(this.values);
