@@ -110,7 +110,7 @@ function IterableWeakMap(){
 				var startIndex=0;
 				if(acc===undefined) acc=this.values[indices[startIndex++]];
 				for(var i=startIndex;i<indices.length;i++){
-					f(acc,this.values[indices[i]],this.keys[indices[i]],this)
+					acc=f(acc,this.values[indices[i]],this.keys[indices[i]],this)
 				}
 				return acc;
 			}
