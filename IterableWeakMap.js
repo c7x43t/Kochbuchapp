@@ -39,7 +39,7 @@ function IterableWeakMap(){
 				if(index!==void 0){
 					this.values[index]=value;
 				}else{
-					var index=this.keys.push(key)-1;
+					index=this.keys.push(key)-1;
 					this.values.push(value);
 					this.length++;
 				}
@@ -106,7 +106,6 @@ function IterableWeakMap(){
 		reduce:{
 			value: function(f,acc){
 				var indices=Object.keys(this.values);
-				var newIterableWeakMap=new this.constructor();
 				var startIndex=0;
 				if(acc===undefined) acc=this.values[indices[startIndex++]];
 				for(var i=startIndex;i<indices.length;i++){
