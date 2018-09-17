@@ -133,7 +133,7 @@ function IterableWeakMap(array){
 					index=this.keys.push(array[i][0])-1;
 					this.values.push(array[i][1]);
 					this.length++;
-					_WeakMap_.set(key,index);
+					_WeakMap_.set(array[i][0],index);
 				}else{
 					throw "Initialization failed: Numbers and Strings cannot be weakly referenced."
 				}
