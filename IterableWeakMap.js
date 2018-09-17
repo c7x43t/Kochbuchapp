@@ -7,7 +7,6 @@ function IterableWeakMap(array){
 	if(array!==void 0){
 		if(array instanceof Array){
 			initIterableWeakMap=true;
-			
 		}else{
 			throw "Optional argument must be an Array.";
 		}
@@ -127,7 +126,7 @@ function IterableWeakMap(array){
 	});
 	if(initIterableWeakMap){
 		var type, index;
-		for(var i=0;i<0;i++){
+		for(var i=0;i<array.length;i++){
 			if(array[i] instanceof Array&&array[i].length===2){
 				type=typeof array[i][0];
 				if(type!=="number"&&type!=="string"){
