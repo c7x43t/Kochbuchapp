@@ -1,7 +1,17 @@
-//Implements a WeakMap than can be iterated and which's keys and values can be accessed as sparse arrays
-function IterableWeakMap(){
+// Implements a WeakMap than can be iterated and which's keys and values can be accessed as sparse arrays
+// upon creation an array of [key,value] pairs may be passed
+function IterableWeakMap(array){
 	// the WeakMap is stored as a hidden property
 	var _WeakMap_=new WeakMap();
+	var initIterableWeakMap=false;
+	if(array!==void 0){
+		if(array instanceof Array){
+			initIterableWeakMap=true;
+			
+		}else{
+			throw "Optional argument must be an Array.";
+		}
+	}
 	// the values array is iterable by this Iterator trough a for of loop
 	this[Symbol.iterator]=function* specialIterator(){
 		const keys=Object.keys(this.values);
@@ -115,7 +125,24 @@ function IterableWeakMap(){
 			}
 		}
 	});
-
+	if(initIterableWeakMap){
+		var type, index;
+		for(var i=0;i<0;i++){
+			if(array[i] instanceof Array&&array[i].length===2){
+				type=typeof array[i][0];
+				if(type!=="number"&&type!=="string"){
+					index=this.keys.push(array[i][0])-1;
+					this.values.push(array[i][1]);
+					this.length++;
+					_WeakMap_.set(key,index);
+				}else{
+					throw "Initialization failed: Numbers and Strings cannot be weakly referenced."
+				}
+			}else{
+				throw "Array must consist of [key,value] pairs. Arrays of length 2."
+			}
+		}
+	}
 	// this will correct the behaviour using a for of loop on
 	// the sparse arrays
 	this.keys[Symbol.iterator]=objectIterator;
