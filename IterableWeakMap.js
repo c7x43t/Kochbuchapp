@@ -8,7 +8,7 @@ function IterableWeakMap(array){
 		if(array instanceof Array){
 			initIterableWeakMap=true;
 		}else{
-			this.constructor.name+" Intialization failed: Optional argument must be an Array.";
+			throw this.constructor.name+" Intialization failed: Optional argument must be an Array.";
 		}
 	}
 	// the values array is iterable by this Iterator trough a for of loop
